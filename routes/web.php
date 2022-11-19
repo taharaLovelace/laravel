@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlunosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/alunos/login', [AlunosController::class, 'login'])->name('alunos.login');
+Route::post('/alunos/logar', [AlunosController::class, 'logar'])->name('alunos.logar');
+Route::post('/alunos/logout', [AlunosController::class, 'logout'])->name('alunos.logout');
+Route::get('/alunos/dashboard', [AlunosController::class, 'dashboard'])->name('alunos.dashboard')->middleware('auth');
